@@ -10,6 +10,7 @@ class SampleETLTask(Task):
         self.logger.info(f"Writing housing dataset to {db}.{table}")
         _data: pd.DataFrame = fetch_california_housing(as_frame=True).frame
         df = self.spark.createDataFrame(_data)
+        df.show()
         df.write.format("delta").mode("overwrite").saveAsTable(f"{db}.{table}")
         self.logger.info("Dataset successfully written")
 
