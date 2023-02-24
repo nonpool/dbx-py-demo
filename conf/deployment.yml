@@ -10,6 +10,10 @@ custom:
       num_workers: 1
       node_type_id: "Standard_E8_v3"
 
+build:
+  commands:
+    - "pip wheel -w dist -e . --prefer-binary --no-deps -i https://pypi.tuna.tsinghua.edu.cn/simple"
+
 environments:
   default:
     workflows:
